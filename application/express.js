@@ -203,17 +203,17 @@ express.prototype.init = function (conf, _routing) {
     }
    
 	app.use(compress());
-    app.use(body_parser.json({limit: '5mb'}));
+    app.use(body_parser.json({limit: 10mb5mb'}));
     app.use(cookieParser()); 
     app.use(body_parser.urlencoded({
-		limit: '5mb',
+		limit: '10mb',
         extended: true
     }));
     // 202105: Deprecate body-parse
-    app.use(expresslib.json({limit: '5mb'}));
+    app.use(expresslib.json({limit: '10mb'}));
     app.use(expresslib.text());
     app.use(expresslib.urlencoded({
-		limit: '5mb',
+		limit: '10mb',
         extended: true
     }));
 
