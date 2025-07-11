@@ -39,9 +39,9 @@ module.exports = class redis {
         };
 
         let redis_infos = [];
-        //console.log('------------------ redis ------------------')
-        //console.log(conf);
-        //console.log('------------------ redis ------------------')
+        console.log('------------------ redis ------------------')
+        console.log(conf);
+        console.log('------------------ redis ------------------')
 
         // 202012: 기존처럼 address만 오는 경우는 그대로 진행함.
         let isMode = 0; // 0:normal, 1: sentinels, 2: clusters
@@ -755,7 +755,7 @@ module.exports = class redis {
 
     getKeys(prefix, callback) {
         // Get keys of all the masters:
-        var masters = this.cluster.nodes('master');
+        var masters = this.Cluster.nodes('master');
 
         Promise.all(
             masters.map(function (node) {
