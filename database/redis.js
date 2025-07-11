@@ -39,9 +39,11 @@ module.exports = class redis {
         };
 
         let redis_infos = [];
-        //console.log('------------------ redis ------------------')
-        //console.log(conf);
-        //console.log('------------------ redis ------------------')
+        if (process.env.NODE_ENV === 'development') {
+            console.log('------------------ redis ------------------')
+            console.log(conf);
+            console.log('------------------ redis ------------------')
+        }
 
         // 202012: 기존처럼 address만 오는 경우는 그대로 진행함.
         let isMode = 0; // 0:normal, 1: sentinels, 2: clusters
