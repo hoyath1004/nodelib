@@ -1,0 +1,222 @@
+{
+    "SKEL_NAME": {
+      "version": "1.0",
+      "mode": "local",
+      "log_path": {
+        "local": "./log/",
+        "dev": "/log/SKEL_NAME/",
+        "live": "/log/SKEL_NAME/"
+      },
+      "level_console": {
+        "local": "debug",
+        "dev": "debug",
+        "live": "crit"
+      },
+      "level_file": {
+        "local": "debug",
+        "dev": "debug",
+        "live": "info"
+      },
+      "express": {
+        "local": {
+          "hostname": "0.0.0.0",
+          "keepalive_timeout": 10,
+          "port": 9999,
+          "log": [ {
+            "type": "custom",
+            "path": "./log/SKEL_NAME/logs/",
+            "name": "access_log",
+            "format": ":ip\t[:date[Asia/Seoul]]\t:custom\t:status"
+          }]
+        },
+        "dev": {
+          "hostname": "0.0.0.0",
+          "keepalive_timeout": 10,
+          "port": 9999,
+          "log": [{
+            "type": "custom",
+            "path": "/log/SKEL_NAME/logs/",
+            "name": "access_log",
+            "format": ":ip\t[:date[Asia/Seoul]]\t:custom\t:status"
+          }]
+        },
+        "live": {
+          "hostname": "0.0.0.0",
+          "keepalive_timeout": 60,
+          "port": 9999,
+          "log": [{
+            "type": "custom",
+            "path": "/log/SKEL_NAME/logs/",
+            "name": "access_log",
+            "format": ":ip\t[:date[Asia/Seoul]]\t:custom\t:status"
+          }]
+        }
+      },
+      "rotate_log": {
+        "local": [
+          {
+            "type": "SKEL_NAME",
+            "name": "SKEL_NAME_log",
+            "interval": "1h",
+            "path": "./log/logs/"
+          }
+        ],
+        "dev": [
+          {
+            "type": "SKEL_NAME",
+            "name": "SKEL_NAME_log",
+            "interval": "1h",
+            "path": "/log/SKEL_NAME/logs/"
+          }
+        ],
+        "live": [
+          {
+            "type": "SKEL_NAME",
+            "name": "SKEL_NAME_log",
+            "interval": "1h",
+            "path": "/log/SKEL_NAME/logs/"
+          }
+        ]
+      },
+      "Router": [
+        {
+          "/sample": {
+            "method": "GET",
+            "path": "./sample.js"
+          }
+        }
+      ],
+      "agent": {
+        "local": {
+          "maxSockets": 20,
+          "keepAlive": true,
+          "timeout": 2000,
+          "connecttimeout": 300,
+          "keepAliveMsecs": 1000
+        },
+        "dev": {
+          "maxSockets": 100,
+          "keepAlive": true,
+          "timeout": 3000,
+          "connecttimeout": 300,
+          "keepAliveMsecs": 10000
+        },
+        "live": {
+          "maxSockets": 2000,
+          "keepAlive": true,
+          "timeout": 40000,
+          "connecttimeout": 300,
+          "keepAliveMsecs": 60000
+        }
+      },
+      "http_request": {
+        "local": {
+          "PAGE_NAME": {
+            "method": "GET",
+            "compress": "",
+            "url": []
+          }
+        },
+        "dev": {
+          "AUDIENCE": {
+            "method": "GET",
+            "compress": "",
+            "url": []
+          }
+        },
+        "live": {
+          "AUDIENCE": {
+            "method": "GET",
+            "compress": "gzip,deflat",
+            "url": []
+          }
+        }
+      },
+      "mysql": {
+        "local": {
+          "database": "MMAN_NEW",
+          "host": "dev-07",
+          "port": 3306,
+          "user": "wwwuser",
+          "password": "wwwuser",
+          "connectionLimit ": 10,
+          "connectTimeout": 2000
+        },
+        "dev": {
+          "database": "MMAN_NEW",
+          "host": "dev-07",
+          "port": 3306,
+          "user": "wwwuser",
+          "password": "wwwuser",
+          "connectionLimit ": 10,
+          "connectTimeout": 2000
+        },
+        "live": {
+          "database": "MMAN_NEW",
+          "host": "14.34.11.23",
+          "port": 3306,
+          "user": "wwwuser",
+          "password": "wwwuser",
+          "connectionLimit ": 30,
+          "connectTimeout": 2000
+        }
+      },
+      "redis": {
+        "local": {
+          "subscribe": [
+            "SKEL-admin"
+          ],
+          "redis_conf": {
+            "enableAutoPipelining": true
+          },
+          "clusters": [
+            {
+              "host": "",
+              "port": 0
+            }
+          ]
+        },
+        "dev": {
+          "subscribe": [
+            "SKEL-admin"
+          ],
+          "redis_conf": {
+            "enableAutoPipelining": true
+          },
+          "clusters": [
+            {
+              "host": "",
+              "port": 0
+            }
+          ]
+        },
+        "live": {
+          "subscribe": [
+            "SKEL-admin"
+          ],
+          "redis_conf": {
+            "enableAutoPipelining": true
+          },
+          "clusters": [
+            {
+              "host": "",
+              "port": 0
+            }
+          ]
+        }
+      },
+      "schedule": [
+        {
+          "use": false,
+          "immediate": false,
+          "name": "Sample Schedule",
+          "def": "",
+          "rule": "1 */1 * * * *",
+          "rule2": {
+            "hour": 0,
+            "minute": 10
+          }
+        }
+      ]
+    }
+  }
