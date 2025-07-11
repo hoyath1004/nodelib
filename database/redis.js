@@ -755,7 +755,7 @@ module.exports = class redis {
 
     getKeys(prefix, callback) {
         // Get keys of all the masters:
-        var masters = this.Cluster.nodes('master');
+        var masters = this.cluster.nodes('master');
 
         Promise.all(
             masters.map(function (node) {
